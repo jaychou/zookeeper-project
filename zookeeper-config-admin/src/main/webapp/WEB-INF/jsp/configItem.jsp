@@ -13,8 +13,12 @@
 						<li>
 							<i class="icon-home home-icon"></i>
 							<a href="#">首页</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
 						</li>
-						
+						<li class="active">配置项</li>
 					</ul><!--.breadcrumb-->
 
 					

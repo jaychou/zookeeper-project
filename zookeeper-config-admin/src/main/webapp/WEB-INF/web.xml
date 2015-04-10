@@ -25,7 +25,7 @@
 		<servlet-name>configAdmin</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
-		    <param-name>contextConfigLocation</param-name>
+			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:configAdmin-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
@@ -39,6 +39,18 @@
 		<servlet-name>configAdmin</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+
+
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 
 
 </web-app>
