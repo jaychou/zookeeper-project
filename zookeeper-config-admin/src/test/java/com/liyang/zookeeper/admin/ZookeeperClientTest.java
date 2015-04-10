@@ -2,6 +2,7 @@ package com.liyang.zookeeper.admin;
 
 import java.util.List;
 
+import com.liyang.zookeeper.admin.domain.Application;
 import com.liyang.zookeeper.admin.zookeeper.ZkNode;
 import com.liyang.zookeeper.admin.zookeeper.ZookeeperClient;
 import com.liyang.zookeeper.admin.zookeeper.zkclient.SimpleZookeeperClient;
@@ -29,6 +30,13 @@ public class ZookeeperClientTest extends TestCase{
 		List<ZkNode> nodes = client.getNodes(appName);
 		for(ZkNode node:nodes) {
 			System.out.println("key="+node.getPath()+"; data="+node.getData());
+		}
+	}
+	
+	public void testGetApplications() {
+		List<Application> result = client.getApplications();
+		for(Application entity:result) {
+			System.out.println("名称："+entity.getName()+"，描述:"+entity.getDescription());
 		}
 	}
 

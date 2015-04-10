@@ -7,6 +7,7 @@ import org.I0Itec.zkclient.ZkClient;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.CreateMode;
 
+import com.liyang.zookeeper.admin.domain.Application;
 import com.liyang.zookeeper.admin.zookeeper.ZkNode;
 import com.liyang.zookeeper.admin.zookeeper.ZookeeperClient;
 import com.liyang.zookeeper.admin.zookeeper.ZookeeperProperties;
@@ -76,6 +77,18 @@ public class SimpleZookeeperClient implements ZookeeperClient{
 			nodes.add(new ZkNode(path, key, data));
 		}
 		return nodes;
+	}
+
+	@Override
+	public List<Application> getApplications() {
+		String path = p.get(CONFIG_PATH_PREF);
+		List<String> keys = zkclient.getChildren(path);
+		List<Application> result = new ArrayList<Application>();
+		for(String key:keys) {
+			String data = zkclient.readData(path+"/"+key);
+			result.add(new Application(key,data));
+		}
+		return result;
 	}
 
 	
