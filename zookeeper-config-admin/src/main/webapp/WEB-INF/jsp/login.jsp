@@ -17,7 +17,7 @@
 		<link href="res/sunshine/webadmin/web/assets/css/ace-responsive.min.css" rel="stylesheet" />
 		<link href="res/sunshine/webadmin/web/assets/css/ace-skins.min.css" rel="stylesheet" />
 
-
+        <link href="res/sunshine/webadmin/web/plugins/simplemodel/assets/css/simplemodal.css" rel="stylesheet" />
 
 		<!--inline styles related to this page-->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
@@ -58,18 +58,18 @@
 
 												<div class="space-6"></div>
 
-												<form id="login">
+												<form id="login" action="login.do">
 													<fieldset>
 														<label>
 															<span class="block input-icon input-icon-right">
-																<input type="text" name="username" class="span12" placeholder="账号" />
+																<input type="text" name="username" id="username" class="span12" placeholder="账号" />
 																<i class="icon-user"></i>
 															</span>
 														</label>
 
 														<label>
 															<span class="block input-icon input-icon-right">
-																<input type="password" class="span12" placeholder="密码" />
+																<input type="password" name="password" id="password" class="span12" placeholder="密码" />
 																<i class="icon-lock"></i>
 															</span>
 														</label>
@@ -110,24 +110,67 @@
 
 		
 
-		
-		<script src="res/sunshine/webadmin/web/assets/js/jquery-2.0.3.min.js"></script>
+		<!-- <script src="res/sunshine/webadmin/web/assets/js/jquery-2.0.3.min.js"></script>
 		<script src="res/sunshine/webadmin/web/assets/js/bootstrap.min.js"></script>
 		<script src="res/sunshine/webadmin/web/assets/js/ace-elements.min.js"></script>
 		<script src="res/sunshine/webadmin/web/assets/js/ace.min.js"></script>
+		//解决jquery与mootools冲突
+		<script type="text/javascript">jQuery.noConflict();</script> -->
+	<script src="res/sunshine/webadmin/web/plugins/simplemodel/mootools-core-1.3.1.js"type="text/javascript" charset="utf-8"></script>
+	<script src="res/sunshine/webadmin/web/plugins/simplemodel/mootools-more-1.3.1.1.js"type="text/javascript" charset="utf-8"></script>
+	<script src="res/sunshine/webadmin/web/plugins/simplemodel/simple-modal.js" type="text/javascript"charset="utf-8"></script>
 
 		<!--inline scripts related to this page-->
 
-		<script type="text/javascript">
-			function show_box(id) {
-			 $('.widget-box.visible').removeClass('visible');
-			 $('#'+id).addClass('visible');
+	<script type="text/javascript">
+		function Trim(str) {
+			return str.replace(/(^\s*)|(\s*$)/g, "");
+		}
+
+		function show_box(id) {
+			$('.widget-box.visible').removeClass('visible');
+			$('#' + id).addClass('visible');
+		}
+
+		function showModal(src, height, width) {
+			var SM = new SimpleModal({
+				"hideFooter" : false,
+				"hideHeader" : false,
+				"width" : width,
+				"height" : height
+			});
+			SM
+					.show({
+						"title" : "Tip Message",
+						"model" : "alert",
+						"contents" : '<iframe src="'+src+'" width="680" height="'+height+'" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>'
+					});
+
+		}
+
+		function checkForm() {
+			var user = document.getElementById('username').value;
+			if (Trim(user) == "") {
+				showModal("alert.htm?reason=1", "50", "450");
+				return;
 			}
-			
-			//登录
-			function login() {
-				location = 'login.do';
+
+			var pwd = document.getElementById('password').value;
+			if (Trim(pwd) == "") {
+				showModal("alert.htm?reason=2", "50", "450");
+				return;
 			}
-		</script>
-	</body>
+			document.getElementById("login").submit();
+		}
+
+		//登录
+		function login() {
+			//location = 'login.do';
+
+			checkForm();
+			//showModal("alert.htm", "50", "450");
+
+		}
+	</script>
+</body>
 </html>

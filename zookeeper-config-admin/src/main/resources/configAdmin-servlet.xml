@@ -21,6 +21,8 @@
 	</bean>
 	<bean name="/login.htm" class="com.liyang.zookeeper.admin.web.screen.Login">
 	</bean>
+	<bean name="/alert.htm" class="com.liyang.zookeeper.admin.web.screen.Alert">
+	</bean>
 
 
 	<!--====================== do ======================= -->
