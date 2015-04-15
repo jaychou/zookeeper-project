@@ -116,6 +116,8 @@
 		<script src="res/sunshine/webadmin/web/assets/js/ace.min.js"></script>
 		//解决jquery与mootools冲突
 		<script type="text/javascript">jQuery.noConflict();</script> -->
+	<script src="res/sunshine/webadmin/web/assets/js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript">jQuery.noConflict();</script>
 	<script src="res/sunshine/webadmin/web/plugins/simplemodel/mootools-core-1.3.1.js"type="text/javascript" charset="utf-8"></script>
 	<script src="res/sunshine/webadmin/web/plugins/simplemodel/mootools-more-1.3.1.1.js"type="text/javascript" charset="utf-8"></script>
 	<script src="res/sunshine/webadmin/web/plugins/simplemodel/simple-modal.js" type="text/javascript"charset="utf-8"></script>
@@ -171,6 +173,14 @@
 			//showModal("alert.htm", "50", "450");
 
 		}
+		
+		jQuery(document).ready(function(){
+			var val = "${result }";
+			if(val=="false") {
+				showModal("alert.htm?reason=3", "50", "450"); 
+			}
+			
+		});
 	</script>
 </body>
 </html>

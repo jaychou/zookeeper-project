@@ -3,7 +3,7 @@
 
 <decorators defaultdir="/decorators">
   <excludes>
-     <pattern>/login.htm</pattern>
+     <pattern>/login.htm*</pattern>
      <pattern>/alert.htm*</pattern>
   </excludes>
 

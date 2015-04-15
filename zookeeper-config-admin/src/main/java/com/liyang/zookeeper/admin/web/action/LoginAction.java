@@ -12,9 +12,18 @@ public class LoginAction extends AbstractController{
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		request.getSession().setAttribute("account", "lijieran");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		
-		response.sendRedirect("index.htm");
+		if(!username.equals("root")&&!password.equals("root")) {
+			response.sendRedirect("login.htm?result=false");
+		} else {
+			request.getSession().setAttribute("account", "lijieran");
+			
+			response.sendRedirect("index.htm");
+		}
+		
+		
 		
 		return null;
 	}

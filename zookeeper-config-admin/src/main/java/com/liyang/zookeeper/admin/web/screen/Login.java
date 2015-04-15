@@ -12,7 +12,17 @@ public class Login extends AbstractController{
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		return new ModelAndView("login");
+		String result = null;
+		try {
+			result = request.getParameter("result").trim();
+		} catch (NullPointerException e) {
+			result = "login";
+		}
+		if (result == null) {
+			result = "login";
+		}
+		
+		return new ModelAndView("login", "result", result);
 	}
 
 }

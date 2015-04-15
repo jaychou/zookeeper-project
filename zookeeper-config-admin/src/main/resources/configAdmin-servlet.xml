@@ -23,6 +23,9 @@
 	</bean>
 	<bean name="/alert.htm" class="com.liyang.zookeeper.admin.web.screen.Alert">
 	</bean>
+	<bean name="/error.htm" 
+	class="com.liyang.zookeeper.admin.web.screen.Error">
+	</bean>
 
 
 	<!--====================== do ======================= -->
